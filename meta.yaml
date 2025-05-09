@@ -1,0 +1,14 @@
+name: "Importrr"
+guid: "fec2137c-7400-473b-ab7d-a1279731e39a"
+version: 1
+targetAbi: "10.10.6.0"
+framework: "net8.0"
+owner: "katiekloss"
+overview: "Torrent client library integration"
+description: >
+  Connects to a remote BitTorrent client and hardlinks finished downloads into their proper locations.
+
+category: "General"
+artifacts:
+  - "Jellyfin.Plugin.Importrr.dll"
+changelog: "Dummy changelog entry to make the build run"

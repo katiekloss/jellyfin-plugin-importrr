@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="importrrConfigPage" data-role="page" class="page pluginConfigurationPage" data-require="emby-input">
+            <div data-role="content">
+                <div class="content-primary">
+                    <h1>Importrr</h1>
+                    <form id="importrrConfigForm">
+                        <div>
+                            <button is="emby-button" type="submit" class="button-submit emby-button">
+                                <span>Save</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                let importrrPluginId = "fec2137c-7400-473b-ab7d-a1279731e39a";
+    
+                document.getElementById("importrrConfigPage").addEventListener("pageshow", function () {
+                    Dashboard.showLoadingMsg();
+    
+                    ApiClient.getPluginConfiguration(importrrPluginId).then(function (config) {
+    
+                        Dashboard.hideLoadingMsg();
+                    });
+                });
+    
+                document.getElementById("importrrConfigForm").addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    Dashboard.showLoadingMsg();
+    
+                    ApiClient.getPluginConfiguration(importrrPluginId).then(function (config) {
+    
+                        ApiClient.updatePluginConfiguration(importrrPluginId, config).then(function (result) {
+                            Dashboard.processPluginConfigurationUpdateResult(result);
+                        })
+                    })
+                });
+            </script>
+        </div>
+    </body>
+</html>
